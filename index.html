@@ -370,7 +370,7 @@
                         if (matchingRecord) {
                             console.log('Found matching record:', matchingRecord);
                             
-                            // Auto-fill form with found data
+                            // Auto-fill form with found data (but don't submit automatically)
                             if (matchingRecord.name) {
                                 document.getElementById('name').value = matchingRecord.name.trim();
                                 console.log('Filled name:', matchingRecord.name);
@@ -405,8 +405,8 @@
                             }
                             // Note: additionalPhone column doesn't exist in your database, so we skip it
                             
-                            // Show success message
-                            showNotification(`נמצאו נתונים עבור: ${matchingRecord.name || 'משתמש'} - הטופס מולא אוטומטית! ✅`, 'success');
+                            // Show success message - form is filled but user must click submit button
+                            showNotification(`נמצאו נתונים עבור: ${matchingRecord.name || 'משתמש'} - הטופס מולא אוטומטית! לחץ על "שלח טופס" כדי לשלוח ✅`, 'success');
                             
                             // Highlight filled fields with animation
                             const allInputs = document.querySelectorAll('input');
