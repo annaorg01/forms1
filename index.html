@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>טופס פינוי בניין</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            direction: rtl;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="80" r="3" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="70" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="90" cy="30" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+        }
+
+        .form-container {
+            padding: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+            font-size: 1rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e1e8ed;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .form-group input:hover {
+            border-color: #667eea;
+            background: white;
+        }
+
+        .phone-section {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            border: 1px solid #e9ecef;
+        }
+
+        .phone-section h3 {
+            color: #495057;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            text-align: center;
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .submit-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                margin: 10px;
+            }
+            
+            .form-container {
+                padding: 20px;
+            }
+            
+            .header {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="https://www.rosh-haayin.muni.il/content/images/logo.png" alt="" style="height: 40px; margin-bottom: 15px; filter: brightness(0) invert(1);">
+            <h1>🏢 טופס פינוי בניין</h1>
+            <p>אנא מלא את הפרטים הבאים במדויק</p>
+        </div>
+        
+        <div class="form-container">
+            <form id="evacuationForm">
+                <div class="form-group">
+                    <label for="idNumber">תעודת זהות</label>
+                    <input type="text" id="idNumber" name="idNumber" placeholder="הכנס מספר תעודת זהות" maxlength="9" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="name">שם</label>
+                    <input type="text" id="name" name="name" placeholder="הכנס שם מלא" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="street">רחוב</label>
+                    <input type="text" id="street" name="street" placeholder="הכנס שם רחוב" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="houseNumber">מספר בית</label>
+                        <input type="text" id="houseNumber" name="houseNumber" placeholder="מספר בית" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="apartmentNumber">מספר דירה</label>
+                        <input type="text" id="apartmentNumber" name="apartmentNumber" placeholder="מספר דירה">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="floor">קומה</label>
+                    <input type="text" id="floor" name="floor" placeholder="מספר קומה">
+                </div>
+
+                <div class="phone-section">
+                    <h3>📞 פרטי קשר</h3>
+                    
+                    <div class="form-group">
+                        <label for="mobilePhone">טלפון נייד</label>
+                        <input type="tel" id="mobilePhone" name="mobilePhone" placeholder="05X-XXXXXXX" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="homePhone">טלפון בבית</label>
+                        <input type="tel" id="homePhone" name="homePhone" placeholder="0X-XXXXXXX">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="emergencyPhone">טלפון חירום</label>
+                        <input type="tel" id="emergencyPhone" name="emergencyPhone" placeholder="טלפון ליצירת קשר בחירום">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="additionalPhone">טלפון נוסף</label>
+                        <input type="tel" id="additionalPhone" name="additionalPhone" placeholder="טלפון נוסף (אופציונלי)">
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">שלח טופס 🚀</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('evacuationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Animation for form submission
+            const button = document.querySelector('.submit-btn');
+            const originalText = button.textContent;
+            
+            button.textContent = 'שולח...';
+            button.style.background = 'linear-gradient(45deg, #27ae60, #2ecc71)';
+            
+            setTimeout(() => {
+                button.textContent = 'נשלח בהצלחה! ✅';
+                
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.style.background = 'linear-gradient(45deg, #667eea, #764ba2)';
+                    
+                    // Show success message
+                    alert('הטופס נשלח בהצלחה! נציג יצור איתך קשר בהקדם.');
+                }, 2000);
+            }, 1500);
+        });
+
+        // ID number validation
+        document.getElementById('idNumber').addEventListener('input', function(e) {
+            this.value = this.value.replace(/\D/g, '');
+        });
+
+        // Phone number formatting
+        const phoneInputs = document.querySelectorAll('input[type="tel"]');
+        phoneInputs.forEach(input => {
+            input.addEventListener('input', function(e) {
+                this.value = this.value.replace(/\D/g, '');
+            });
+        });
+    </script>
+</body>
+</html>
